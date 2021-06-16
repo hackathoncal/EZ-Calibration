@@ -1,0 +1,89 @@
+{
+  "platformType":"OPWI",
+  "templatesEntryPoint": "F:\\views\\g\\QOPWICalibrations\\QOPWICalibrations\\java\\Templates",
+  "flowsEntryPoint": "F:\\views\\g\\QOPWICalibrations\\QOPWICalibrations\\java\\CommonFlows",
+  "configEntryPoint": "F:\\views\\g\\QOPWICalibrations\\QOPWICalibrations\\java\\Plugins",
+  "applicationEntryPoint": "F:\\views\\g\\QOPWICalibrations\\QOPWICalibrations\\java\\%s",
+  "pythonEntryPoint": "F:\\views\\g\\QOPWICalibrations\\QOPWICalibrations\\python\\opwi_calibrations\\src",
+  "pythonTemplatesEntryPoint": "F:\\views\\g\\QTemplates\\QTemplates\\cookiecutters",
+  "cookiecutterExe" : "\\\\il-nas-01\\PD-Application\\Application\\cookiecutters\\Python\\Python38\\Scripts\\cookiecutter.exe",
+  "simpleFlows":
+  [{
+    "name" : "Friday Flow",
+    "configNodeName" : "Friday Config",
+    "platformUsage": true,
+    "takeImageUsage": true,
+    "algoEntryPoints": [
+      {
+        "hlaName": "Friday Flow",
+        "prismTask": "f_average"
+      }
+    ],
+    "hmsUsage": true,
+    "calibrationFlow": true
+  },{
+    "name" : "Thursday Flow",
+    "configNodeName" : "Thursday Config",
+    "platformUsage": true,
+    "takeImageUsage": true,
+    "algoEntryPoints": [
+      {
+        "hlaName": "Thursday Flow",
+        "prismTask": "f_sum"
+      }
+    ],
+    "hmsUsage": true,
+    "calibrationFlow": true
+  }
+  ],
+  "simpleApplications":
+  [
+    {
+      "name" : "Tuesday App",
+      "batchSupport": false,
+      "editTpe": true,
+      "readLastHms":true,
+      "parentComponent":"Zoo Calibration",
+      "flows": ["Friday Flow"],
+      "webConfig" :  {
+        "templateRoot" : "F:\\views\\g\\QApplicationComponentUtils\\FE\\STUB",
+        "componentRoot" : "F:\\views\\g\\QOPWICalibrations",
+        "urlPrefix": "tuesday_app",
+        "showTable": false,
+        "showGraph" : false
+      }
+    },
+    {
+      "name":"Monday App",
+      "batchSupport":false,
+      "editTpe":true,
+      "readLastHms":true,
+      "parentComponent":"Zoo Calibration",
+      "flows":["Friday Flow"],
+      "webConfig":{
+        "templateRoot":"F:\\views\\g\\QApplicationComponentUtils\\FE\\STUB",
+        "componentRoot":"F:\\views\\g\\QOPWICalibrations",
+        "urlPrefix":"monday_app",
+        "showTable": false,
+        "showGraph" : false
+      }
+    }
+
+
+  ],
+  "compositeApplications":
+  [
+    {
+      "name":"Zoo Calibration",
+      "batchSupport":true,
+      "embeddedApplications":["Tuesday App","Monday App"],
+      "webConfig":{
+        "templateRoot":"F:\\views\\g\\QApplicationComponentUtils\\FE\\STUB",
+        "componentRoot":"F:\\views\\g\\QOPWICalibrations",
+        "urlPrefix":"opwi_calibrations",
+        "showTable": true,
+        "showGraph" : false
+      }
+    }
+  ]
+}

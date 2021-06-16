@@ -1,0 +1,61 @@
+* {
+  font-family: Bookman, URW Bookman L, serif;
+}
+h1 {
+  color: #4c4a37;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  margin: 0 0 24px;
+}
+
+
+
+.saveButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  border-radius: 15px;
+  padding: 1vw 1vh;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+  position: fixed;
+  bottom: 2.5%;
+  right: 1%;
+  z-index: 9999;
+}
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: linear-gradient(
+                  45deg, black, transparent);
+  color: white;
+  font-size: 30px;
+  display: flex;
+  div {
+    margin-right: 5vw;
+  }
+}
+
+.title-explain {
+  margin-left: 3vw;
+}
+
+.coverJsonFileFields {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5vh 5vw;
+  div {
+    font-size: 18px;
+  }
+
+  input {
+    width: 50vw;
+  }
+}
